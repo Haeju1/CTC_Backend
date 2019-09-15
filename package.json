@@ -1,0 +1,26 @@
+{
+  "name": "ctc_backend",
+  "version": "1.0.0",
+  "description": "CTC Web Backend Coding Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Haeju1/CTC_Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Haeju1/CTC_Backend/issues"
+  },
+  "homepage": "https://github.com/Haeju1/CTC_Backend#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.1",
+    "node-fetch": "^2.6.0"
+  }
+}
