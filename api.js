@@ -9,8 +9,8 @@ const fetch = require("node-fetch");
 const mongoose = require('mongoose');
 
 // Get a free food event by id
-router.get('/events', async (req,res,next) => {
-  let event_id=req.query.id;
+router.get('/events/:id', async (req,res) => {
+  let event_id=req.params.id;
 
   try {
     // Find One event, if not, throw error
@@ -55,8 +55,8 @@ router.post('/events', async (req,res)=>{
 });
 
 // Update a free food event by id
-router.post('/events:id', async (req,res)=>{
-  let event_id=req.query.id;
+router.post('/events/:id', async (req,res)=>{
+  let event_id=req.params.id;
   try {
     // Find one event and update, if the event cannot be found, throw error
     const eventUpdated = await Event.findOneAndUpdate({id: event_id}, {$set:{food: req.body.food,}});
@@ -72,8 +72,8 @@ router.post('/events:id', async (req,res)=>{
 });
 
 // Delete a free food event
-router.delete('/events', async (req,res)=>{
-  let event_id=req.query.id;
+router.delete('/events/:id', async (req,res)=>{
+  let event_id=req.params.id;
   try {
     // Delete the event, if the event cannot be dound, throw error
     const eventDeleted = await Event.deleteOne({id: event_id});
@@ -91,15 +91,15 @@ router.delete('/events', async (req,res)=>{
 });
 
 // Get comments for an event
-router.get('/events/comments/', async (req,res)=>{
-  let event_id=req.query.eventId;
+router.get('/events/comments/:eventId', async (req,res)=>{
+  let event_id=req.params.eventId;
   let commentsFound = await Comment.find({ eventId: event_id});
   res.send(commentsFound);
 });
 
 // Add a comment to an event
-router.post('/events/comments/', async (req,res)=>{
-  let event_id=req.query.eventId;
+router.post('/events/comments/:eventId', async (req,res)=>{
+  let event_id=req.params.eventId;
   // Counts up number of documents to generate unique id
   let count = await Comment.countDocuments({});
   try {
@@ -121,8 +121,8 @@ router.post('/events/comments/', async (req,res)=>{
 });
 
 // Delete a comment by id
-router.delete('/events/comments/', async (req,res)=>{
-  let comment_id=req.query.id;
+router.delete('/events/comments/:id', async (req,res)=>{
+  let comment_id=req.params.id;
   try {
     // Delete a comment, if the comment cannot be found, throw error
     const commentDeleted = await Comment.deleteOne({id: comment_id});

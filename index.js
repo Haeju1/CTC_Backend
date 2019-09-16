@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 
 
 // Connect to mongoDB and sets to ES6 promise
-mongoose.connect('mongodb://localhost:27017/TrojanKicks',{useUnifiedTopology: true, useNewUrlParser: true}, (err) =>{
+mongoose.connect("mongodb+srv://HaejuCTC:CTCBackend@ctcbackend-pbet5.mongodb.net/CTCBackend?retryWrites=true&w=majority",{useUnifiedTopology: true, useNewUrlParser: true}, (err) =>{
     if(!err){
       console.log('Connection has been made successfully to mongoDB');
     }
