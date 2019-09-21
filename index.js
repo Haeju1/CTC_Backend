@@ -10,9 +10,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-
 // Connect to mongoDB and sets to ES6 promise
-mongoose.connect("mongodb+srv://HaejuCTC:CTCBackend@ctcbackend-pbet5.mongodb.net/CTCBackend?retryWrites=true&w=majority",{useUnifiedTopology: true, useNewUrlParser: true}, (err) =>{
+mongoose.connect(process.env.MONGO_URI,{useUnifiedTopology: true, useNewUrlParser: true}, (err) =>{
     if(!err){
       console.log('Connection has been made successfully to mongoDB');
     }
@@ -24,9 +23,7 @@ mongoose.connect("mongodb+srv://HaejuCTC:CTCBackend@ctcbackend-pbet5.mongodb.net
 // sets mongoose's promise to global promise
 mongoose.Promise = global.Promise;
 
-
-
-// Intialize the routes with /api route
+// Intialize the routes with / route
 app.use('/', routes);
 app.use(express.json());
 
